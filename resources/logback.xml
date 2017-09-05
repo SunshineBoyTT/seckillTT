@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration debug="true">  
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">  
+    <layout class="ch.qos.logback.classic.PatternLayout">  
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>  
+    </layout>  
+  </appender>  
+  
+  <logger name="Java.sql.PreparedStatement" level="DEBUG" />  
+  <logger name="org.springframework.ui.freemarker" level="DEBUG" />  
+  
+  <root level="debug">  
+    <appender-ref ref="stdout" />  
+  </root>  
+</configuration> 
