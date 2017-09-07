@@ -1,7 +1,13 @@
 package org.seckill.web;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.jdbc.Null;
 import org.seckill.dto.Exposer;
@@ -104,5 +110,35 @@ public class SeckillController {
 	        Date now=new Date();
 	        return new SeckillResult<Long>(true,now.getTime());
 	    }
-	
+	    
+	  //设置Cookie
+//	    @RequestMapping(value = "/setCookie")
+//	    public String setCookie(HttpServletRequest request,HttpServletResponse response,String userPhone,Long seckillId,Model model)
+//	    {	
+//	    	if (seckillId==null) {
+//				return "redirect:/seckill/list";
+//			}
+//			SecKill secKill=seckillService.getById(seckillId);
+//			if (secKill==null) {
+//				return "forward:/seckill/list";
+//			}
+//			model.addAttribute("seckill",secKill);
+//	    	Cookie cookie = new Cookie("userPhone",userPhone);
+//	    	cookie.setDomain("localhost");
+//	    	cookie.setPath("/seckill");
+//	    	cookie.setMaxAge(3600*7);
+//	    	response.addCookie(cookie);
+//	    	return "/seckill/"+seckillId+"/detail";
+//	    }
+	    @RequestMapping(value = "/setCookie")
+	    public Map setCookie(HttpServletRequest request,HttpServletResponse response,String userPhone)
+	    {	
+	    	Map map=new HashMap();	
+	    	Cookie cookie = new Cookie("userPhone",userPhone);
+	    	cookie.setDomain("localhost");
+	    	cookie.setPath("/seckill");
+	    	cookie.setMaxAge(3600*7);
+	    	response.addCookie(cookie);
+	    	return map;
+	    }
 }
