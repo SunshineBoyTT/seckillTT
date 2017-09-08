@@ -48,19 +48,7 @@ var seckill = {
                     console.log("inputPhone: " + inputPhone);
                     if (seckill.validatePhone(inputPhone)) {
                         //电话写入cookie(7天过期)
-//                        $.cookie('userPhone', inputPhone, {expires: 7, path: '/seckill'});
-                    	//调用设置后台cookie方法
-//                    	window.location.href="/seckill/setCookie?userPhone="+inputPhone="&seckillId="+seckillId;
-                    	$.ajax({
-                    		url : '/seckill/setCookie',
-                    		type : 'Get',
-                    		async: false,//使用同步的方式,true为异步方式
-                    		data : {'userPhone':inputPhone},//这里使用json对象
-                    		success : function(data){
-                    		//code here...
-                    			console.log("cookie success");
-                    		},
-                    		});
+                        $.cookie('userPhone', inputPhone, {expires: 7, path: '/seckill'});
                         //验证通过　　刷新页面
                         window.location.reload();
                     } else {
