@@ -1,8 +1,9 @@
 package org.seckill.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SecKill {
+public class SecKill{
 	private long seckillId;
 	private String name;
 	private int number;

@@ -83,7 +83,7 @@ public class SeckillController {
 	        SeckillResult<SeckillExecution> result;
 
 	        try {
-	            SeckillExecution execution = seckillService.executeSeckill(seckillId, userPhone, md5);
+	            SeckillExecution execution = seckillService.executeSeckillByProdure(seckillId, userPhone, md5);
 	            return new SeckillResult<SeckillExecution>(true, execution);
 	        }catch (RepeatKillException e1)
 	        {
@@ -111,31 +111,12 @@ public class SeckillController {
 	        return new SeckillResult<Long>(true,now.getTime());
 	    }
 	    
-	  //设置Cookie
-//	    @RequestMapping(value = "/setCookie")
-//	    public String setCookie(HttpServletRequest request,HttpServletResponse response,String userPhone,Long seckillId,Model model)
-//	    {	
-//	    	if (seckillId==null) {
-//				return "redirect:/seckill/list";
-//			}
-//			SecKill secKill=seckillService.getById(seckillId);
-//			if (secKill==null) {
-//				return "forward:/seckill/list";
-//			}
-//			model.addAttribute("seckill",secKill);
-//	    	Cookie cookie = new Cookie("userPhone",userPhone);
-//	    	cookie.setDomain("localhost");
-//	    	cookie.setPath("/seckill");
-//	    	cookie.setMaxAge(3600*7);
-//	    	response.addCookie(cookie);
-//	    	return "/seckill/"+seckillId+"/detail";
-//	    }
 	    @RequestMapping(value = "/setCookie")
 	    public Map setCookie(HttpServletRequest request,HttpServletResponse response,String userPhone)
 	    {	
 	    	Map map=new HashMap();	
 	    	Cookie cookie = new Cookie("userPhone",userPhone);
-	    	cookie.setDomain("localhost");
+	    	cookie.setDomain("127.0.0.1");
 	    	cookie.setPath("/seckill");
 	    	cookie.setMaxAge(3600*7);
 	    	response.addCookie(cookie);
